@@ -1,0 +1,230 @@
+Canyon:
+  # Spawn points for each team, can have as many entries as you like.
+  # At least one required.
+  spawns:
+    red:
+    - "-107,73,225"
+    yellow:
+    - "221,73,233"
+    green:
+    - "233,73,-96"
+    blue:
+    - "-96,73,-108"
+  # Nexuses for each team, only one nexus each. 
+  # Required.
+  nexuses:
+    red: "-114,70,238"
+    yellow: "238,70,239"
+    green: "239,70,-113"
+    blue: "-113,70,-114"
+  
+  # Ender furnaces for each team, only one each. 
+  # Optional.
+  furnaces:
+    red: "-112,73,228"
+    yellow: "228,73,237"
+    green: "237,73,-103"
+    blue: "-103,73,-112"
+         
+  # Diamond locations, can have as many as you like.
+  # Optional, but highly recommended.
+  diamonds:
+  - "73,67,82"
+  - "69,65,76"
+  - "70,67,74"
+  - "61,66,66"
+  - "61,64,61"
+  - "72,65,55"
+  - "82,67,52"
+  - "81,66,59"
+  - "51,65,57"
+  - "52,67,43"
+  - "44,65,47"
+  - "57,66,62"
+  - "43,67,73"
+  - "46,66,73"
+  - "38,66,62"
+  - "71,67,57"
+  - "67,66,43"
+  - "49,69,58"
+  - "38,66,62"
+  bosses:
+    boss1:
+      name: "&bAgua"
+      spawn: "61,14,-49"
+      chest: "62,15,-42"
+      hearts: 100
+    boss2:
+      name: "&cLLama"
+      spawn: "63,14,174"
+      chest: "63,15,167"
+      hearts: 100
+Castillo:
+  # Spawn points for each team, can have as many entries as you like.
+  # At least one required.
+  spawns:
+    red:
+    - "859,69,305"
+    yellow:
+    - "592,69,320"
+    green:
+    - "577,69,53"
+    blue:
+    - "844,69,38"
+  # Nexuses for each team, only one nexus each. 
+  # Required.
+  nexuses:
+    red: "857,84,318"
+    yellow: "579,84,318"
+    green: "579,84,40"
+    blue: "857,84,40"
+  
+  # Ender furnaces for each team, only one each. 
+  # Optional.
+  furnaces:
+    red: "861,62,306"
+    yellow: "591,62,322"
+    green: "575,62,52"
+    blue: "845,62,36"
+    
+  # Diamond locations, can have as many as you like.
+  # Optional, but highly recommended.
+  diamonds:
+  - "724,67,167"
+  - "730,67,173"
+  - "730,67,185"
+  - "724,67,191"
+  - "712,67,191"
+  - "706,67,185"
+  - "706,67,173"
+  - "712,67,167"
+  - "718,67,175"
+  - "722,67,179"
+  - "718,67,183"
+  - "714,67,179"
+Costa:
+  # Spawn points for each team, can have as many entries as you like.
+  # At least one required.
+  spawns:
+    red:
+    - "166,87,168"
+    yellow:
+    - "163,87,441"
+    green:
+    - "436,87,444"
+    blue:
+    - "439,87,171"
+  # Nexuses for each team, only one nexus each. 
+  # Required.
+  nexuses:
+    red: "137,71,142"
+    yellow: "137,71,470"
+    green: "465,71,470"
+    blue: "465,71,142"
+  
+  # Ender furnaces for each team, only one each. 
+  # Optional.
+  furnaces:
+    red: "147,87,156"
+    yellow: "151,87,460"
+    green: "455,87,456"
+    blue: "451,87,152"
+    
+  # Diamond locations, can have as many as you like.
+  # Optional, but highly recommended.
+  diamonds:
+  - "301,70,311"
+  - "301,70,308"
+  - "296,69,305"
+  - "302,70,301"
+  - "311,70,310"
+  - "307,69,314"
+  - "301,71,319"
+  - "293,71,310"
+  
+  # Boss Configuration.
+  # Optional.
+  bosses:
+    boss1:
+      name: "&bAgua"
+      spawn: "448,79,310"
+      chest: "448,79,310"
+      hearts: 100
+    boss2:
+      name: "&cLlama"
+      spawn: "154,79,302"
+      chest: "154,79,302"
+      hearts: 100
+Volcan:
+  # Spawn points for each team, can have as many entries as you like.
+  # At least one required.
+  spawns:
+    red:
+    - "298,4,7"
+    yellow:
+    - "295,4,-287"
+    green:
+    - "4,4,10"
+    blue:
+    - "1,4,-284"
+  # Nexuses for each team, only one nexus each. 
+  # Required.
+  nexuses:
+    red: "296,18,8"
+    yellow: "296,18,-285"
+    green: "3,18,8"
+    blue: "3,18,-285"
+  
+  # Ender furnaces for each team, only one each. 
+  # Optional.
+  furnaces:
+    red: "296,5,-3"
+    yellow: "285,5,-285"
+    green: "14,5,8"
+    blue: "3,5,-274"
+        
+  # Diamond locations, can have as many as you like.
+  # Optional, but highly recommended.
+  diamonds:
+  - "152,32,-133"
+  - "148,32,-136"
+  - "148,32,-143"
+  - "149,32,-148"
+  - "155,32,-151"
+  - "161,32,-139"
+  - "152,30,-139"
+  - "155,28,-145"
+  - "158,30,-145"
+  - "158,30,-141"
+  bosses:
+    boss1:
+      name: "&bAgua"
+      spawn: "149,5,22"
+      chest: "149,5,22"
+      hearts: 100
+    boss2:
+      name: "&cLLama"
+      spawn: "149,5,-298"
+      chest: "149,5,-298"
+      hearts: 100
+#
+# Mapa del lobby
+#
+lobby:
+  spawn: "0,71,0"
+ 
+  # Team join sign locations.
+  # Optional, but highly recommended.
+  signs:
+    red:
+    - "-3,72,4"
+    - "-4,72,3"
+    yellow:
+    - "3,72,4"
+    - "4,72,3"
+    green:
+    - "3,72,-4"
+    - "4,72,-3"
+    blue:
+    - "-4,72,-3"
+    - "-3,72,-4"

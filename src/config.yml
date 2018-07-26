@@ -1,0 +1,137 @@
+#                  Annihilation Create By Newpredator
+#
+#                             RoyalHero
+#
+#      Copyright by RoyalHero if you sold this plugin it shall be unlawful
+#       and a crime could have been committed and a crime could have been committed.
+
+#Indicador del lobby en el scoreboard
+SBNLobby: 1
+
+MySQL:
+    port: 3306
+    user: root
+    pass: ''
+    host: localhost
+    name: gstats
+
+requiredToStart: 12
+
+start-delay: 120
+
+phase-period: 600
+
+restart-delay: 120
+
+build: 7
+
+bossRespawnDelay: 600
+
+enableMotd: true
+
+lastJoinPhase: 3
+
+motd: '&cFase: &5%PHASE%'
+motd-lobby: '&5Lobby'
+motd-start: '&6Fase: &2%PHASE%'
+
+prefix: '&6&lDTN:'
+
+Boss-loot:
+  Item-Nb: 6
+  Item0:
+    ==: org.bukkit.inventory.ItemStack
+    type: DIAMOND_HELMET
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 1
+        OXYGEN: 3
+      display-name: '§eOxyger'
+      lore:
+      - '§7Power of oxygen'
+      - '§eUnique Item'
+      repair-cost: 4
+  Item1:
+    ==: org.bukkit.inventory.ItemStack
+    type: DIAMOND_HELMET
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+        OXYGEN: 3
+      display-name: '§6Oxyger II'
+      lore:
+      - '§7Power of oxygen II'
+      - '§5Rare Item'
+      repair-cost: 4
+  Item2:
+    ==: org.bukkit.inventory.ItemStack
+    type: DIAMOND_LEGGINGS
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+      display-name: '§3Anti sharp'
+      lore:
+      - '§7Better than normal.'
+      - '§eUnique Item'
+      repair-cost: 2
+  Item3:
+    ==: org.bukkit.inventory.ItemStack
+    type: DIAMOND_BOOTS
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 2
+        PROTECTION_FALL: 4
+      display-name: '§aFly boots'
+      lore:
+      - '§7Less damage of falling.'
+      - '§5Rare Item'
+      repair-cost: 2
+  Item4:
+    ==: org.bukkit.inventory.ItemStack
+    type: BOW
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        ARROW_INFINITE: 1
+      display-name: '§aInfinite Shooter'
+      lore:
+      - '§7This bow is great.'
+      - '§eUnique Item'
+      repair-cost: 4
+  Item5:
+    ==: org.bukkit.inventory.ItemStack
+    type: DIAMOND_SWORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        DAMAGE_ALL: 3
+      display-name: '§aBlood finder'
+      lore:
+      - '§7Sharpness is your brother.'
+      - '§eUnique Item'
+      repair-cost: 2
+  Item6:
+    ==: org.bukkit.inventory.ItemStack
+    type: DIAMOND_CHESTPLATE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+      display-name: '§2§lTroll plate'
+      lore:
+      - '§7Defending is smarter'
+      - '§eUnique Item'
+      repair-cost: 2
+Money-boss-kill: 15
+Exp-boss-kill: 865

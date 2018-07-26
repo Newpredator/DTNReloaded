@@ -1,0 +1,9 @@
+package me.newpredator.Annihilation.stats;
+
+	
+	public enum StatsType
+	{
+	   DTNKILLS, DTNDEATHS, DTNWINS, DTNLOSSES, DTNBREAKS, FFAKILLS, FFADEATHS, FFAMAXRACHA, SWWINS, SWLOSSES, SWDEATHS, SWKILLS, MJWINS, MJLOSSES, GEMAS
+	}
+
+

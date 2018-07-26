@@ -1,0 +1,75 @@
+name: DTN
+main: me.newpredator.Annihilation.Annihilation
+authors: [Newpredator, JDev_]
+softdepend: [PermissionsEx]
+website: royalhero.esy.es
+version: 0.4
+commands:
+  annihilation:
+    description: Commandos de Annihilation
+    aliases: [anni, ha, aniquilacion, dtn, den, heroa, destruye]
+  team:
+    description: Commando de equipo
+    aliases: [equipo, teams]
+  vote:
+    description: Commando para votar mapa
+    aliases: [v, voto, vota]
+  stats:
+    description: Commando para ver los stats
+    aliases: [s, estadisticas]
+  class:
+    description: Selecciona una clase
+    aliases: [kit, kits, clases, k, clas, ki, classes]
+  blue:
+    description: Entrar al equipo azul!
+    aliases: [azul]
+  green:
+    description: Entrar al equipo verde!
+    aliases: [verde]
+  yellow:
+    description: Entrar al equipo amarillos!
+    aliases: [amarillo]
+  red:
+    description: Entrar al equipo rojo!
+    aliases: [rojo]
+  distance:
+    description: Distancia del Nexus
+    aliases: [d, distancia]
+  map:
+    description: Commando Admin
+    aliases: [m, mapa, mapas, maps]
+  gemas:
+    description: Commando para ver los puntos
+    aliases: [gems, money, dinero]
+  help:
+     description: Annihilation help.
+     aliases: [ayuda]
+  salir:
+    description: Leave
+    aliases: [leave, lobby, hub, salirse]
+  gemas:
+    description: Command for gemas
+    usage: /gemas
+    aliases: [money, dinero, gema]
+permissions:
+    vip.guardian:
+        description: Main permissions of Vip Guardian
+        default: op
+    vip.heroe:
+        description: Main permissions of Vip Heroe
+        default: op
+    vip.superheroe:
+        description: Main permissions of Vip SuperHeroe
+        default: op
+    hero.admin:
+        descriprion: Main permission of Admin
+        default: op
+    anni.phase:
+        description: Join in all phases
+        default: op
+    anni.team:
+        description: No full Teams, No team limit
+        default: op
+    anni.command.start:
+        description: Start the game
+        default: op
