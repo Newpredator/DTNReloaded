@@ -1,23 +1,11 @@
-### Markdown
+# Annihilation
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Do you own a server where you need a minigame that means more? Are you a server owner looking for a game that will make players stay for hours on your server on end? Well Annihilation is definetly for you!
 
-```markdown
-Syntax highlighted code block
+Download now! http://dev.bukkit.org/bukkit-plugins/anni/
 
-# DTNReloaded
+ **Simple Description**: A continuation open source replica of the ShotBow Network's game, Annihilation. 
 
-## Header 2
-### Header 3
+ **Developers**: coasterman10, stuntguy3000, Newpredator
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
+* **Current Version**: Beta
