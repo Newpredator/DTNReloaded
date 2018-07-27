@@ -1,0 +1,5 @@
+Error:
+  NoPermToChangeTeam: '&cYou cant change your team'
+  TeamDoesntExist: '&cThat team doesnt exist'
+  TeamFull: '&cThis team is full, try with another one'
+  JoinWithNexusDestroyed: '&cYou cant join because this team nexus was destroyed'

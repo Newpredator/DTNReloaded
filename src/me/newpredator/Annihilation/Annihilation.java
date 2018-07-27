@@ -154,7 +154,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
        Bukkit.getPluginManager().registerEvents(this, this);
         anni = this;
         configManager = new ConfigManager(this);
-        configManager.loadConfigFiles("config.yml", "mapas.yml", "shops.yml", "stats.yml", "servidor.yml");
+        configManager.loadConfigFiles("config.yml", "mapas.yml", "shops.yml", "stats.yml", "servidor.yml", "messages.yml");
         
         ActionApi.nmsver = Bukkit.getServer().getClass().getPackage().getName();
         ActionApi.nmsver = ActionApi.nmsver.substring(ActionApi.nmsver.lastIndexOf(".") + 1);
@@ -163,13 +163,13 @@ public final class Annihilation extends JavaPlugin implements Listener {
             ActionApi.useOldMethods = true;
         }
         
-        Configuration config = configManager.getConfig("config.yml");
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         log = Logger.getLogger("Minecraft");
         File mapsdata = new File(plugin.getDataFolder() + "/mapas/");
         MapRollback mapRollback = new MapRollback(plugin.getLogger(), mapsdata);
         maps = new MapManager(this, mapRollback, configManager.getConfig("mapas.yml"));
         crafting = new HashMap<Player, BlockObject>();
+        Configuration config = configManager.getConfig("config.yml");
         Configuration shops = configManager.getConfig("shops.yml");
         new Shop(this, "Weapon", shops);
         new Shop(this, "Brewing", shops);
@@ -677,35 +677,36 @@ Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&'
 	@SuppressWarnings("deprecation")
 	public void joinTeam(Player player, String team) {
         PlayerMeta meta = PlayerMeta.getMeta(player);
+        Configuration messages = configManager.getConfig("messages.yml");
         if (meta.getTeam() != GameTeam.NONE && !player.hasPermission("anni.team") || 
         		meta.getTeam() != GameTeam.NONE && !player.hasPermission("vip.heroe")) {
-            player.sendMessage(ChatColor.GRAY + "No puedes cambiar de equipo");
+            player.sendMessage(colors(messages.getString("Error.NoPermToChangeTeam")));
             return;
         }
         GameTeam target;
         try {
             target = GameTeam.valueOf(team.toUpperCase());
         } catch (IllegalArgumentException e) {
-            player.sendMessage(ChatColor.RED + "Este equipo no existe");
+            player.sendMessage(colors(messages.getString("Error.TeamDoesntExist")));
             ListTeams(player);
             return;
         }
         if (target == null) {
-            player.sendMessage(ChatColor.DARK_PURPLE + "El equipo esta lleno prueba con otro");
+            player.sendMessage(colors(messages.getString("Error.TeamFull")));
             ListTeams(player);
             return;
         }
         if (Util.getTeamAllowEnter(target)
                 && !player.hasPermission("anni.team")  || Util.getTeamAllowEnter(target)
                 && !player.hasPermission("vip.heroe")) {
-            player.sendMessage(ChatColor.DARK_PURPLE + "El equipo esta lleno prueba con otro");
+            player.sendMessage(colors(messages.getString("Error.TeamFull")));
             ListTeams(player);
             return;
         }
 
         if (target.getNexus() != null) {
             if (target.getNexus().getHealth() == 0 && getPhase() > 1) {
-                player.sendMessage( ChatColor.RED + "No puedes entrar por que el nexo esta destruido");
+                player.sendMessage(colors(messages.getString("Error.JoinWithNexusDestroyed")));
                 return;
             }
         }
@@ -941,6 +942,10 @@ public void onPlayerInteract(PlayerInteractEvent event) {
     	   p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cEquipo Rojo: &r" + red));
     	   p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6Equipo Amarillo: &r" + yellow));
     	   p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2Equipo Verde: &r" + green ));
+       }
+       
+       public String colors(String message) {
+    	   return ChatColor.translateAlternateColorCodes('&', message);
        }
        
 }

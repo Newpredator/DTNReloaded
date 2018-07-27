@@ -1,6 +1,6 @@
-name: DTN
+name: DTNReloaded
 main: me.newpredator.Annihilation.Annihilation
-authors: [Newpredator, JDev_]
+authors: [Newpredator]
 softdepend: [PermissionsEx]
 website: royalhero.esy.es
 version: 0.4
