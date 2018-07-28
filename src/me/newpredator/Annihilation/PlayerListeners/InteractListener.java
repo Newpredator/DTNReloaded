@@ -13,6 +13,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.LivingEntity;
@@ -47,7 +48,8 @@ public class InteractListener implements Listener {
             if (handItem != null) {
                 if (handItem.getType() == Material.FEATHER) {
                     if (handItem.getItemMeta().hasDisplayName()) {
-                        if (handItem.getItemMeta().getDisplayName().contains("§aSelecciona Clase §7(Click Derecho)")) {
+                    	Configuration messages = Annihilation.configManager.getConfig("messages.yml");
+                        if (handItem.getItemMeta().getDisplayName().contains(Annihilation.colors(messages.getString("Items.KitSelector")))) {
                             Util.showClassSelector(e.getPlayer());
                             return;
                         }
@@ -58,7 +60,8 @@ public class InteractListener implements Listener {
                     if (handItem != null) {
                         if (handItem.getType() == Material.FIREBALL) {
                             if (handItem.getItemMeta().hasDisplayName()) {
-                                if (handItem.getItemMeta().getDisplayName().contains("§eSal §7(Click Derecho)")) {
+                            	Configuration messages = Annihilation.configManager.getConfig("messages.yml");
+                                if (handItem.getItemMeta().getDisplayName().contains(Annihilation.colors(messages.getString("Items.LeaveItem")))) {
                     	            ByteArrayDataOutput out = ByteStreams.newDataOutput();
                     	            out.writeUTF("Connect");
                     	            out.writeUTF("AnniAnnihilation1");
@@ -177,7 +180,8 @@ public class InteractListener implements Listener {
             if (handItem != null) {
                 if (handItem.getType() == Material.BOOK) {
                     if (handItem.getItemMeta().hasDisplayName()) {
-                        if (handItem.getItemMeta().getDisplayName().contains("§cVota Mapa §7(Click Derecho)")) {
+                        Configuration messages = Annihilation.configManager.getConfig("messages.yml");
+                        if (handItem.getItemMeta().getDisplayName().contains(Annihilation.colors(messages.getString("Items.MapSelector")))) {
                             Util.showMapSelector(player);
                             return;
                         }
@@ -195,7 +199,8 @@ public class InteractListener implements Listener {
             if (handItem != null) {
                 if (handItem.getType() == Material.GOLD_INGOT) {
                     if (handItem.getItemMeta().hasDisplayName()) {
-                        if (handItem.getItemMeta().getDisplayName().contains("§dCompra kits §7(Click Derecho)")) {
+                    	Configuration messages = Annihilation.configManager.getConfig("messages.yml");
+                        if (handItem.getItemMeta().getDisplayName().contains(Annihilation.colors(messages.getString("Items.KitShop")))) {
                             Util.showShopSelector(player);
                             return;
                         }

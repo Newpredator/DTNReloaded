@@ -1,11 +1,9 @@
 package me.newpredator.Annihilation;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,7 +76,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -101,7 +98,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -113,7 +109,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
     public final HashMap<String, Kit> kitsToGive = new HashMap<String, Kit>();
     public String prefix;
     public static MySQL mysql;
-    public ConfigManager configManager;
+    public static ConfigManager configManager;
     public static VotingManager voting;
     private static MapManager maps;
     private PhaseManager timer;
@@ -256,7 +252,7 @@ Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&'
 		
 		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&b&m-----------------------------"));
 		for(Player p : Bukkit.getOnlinePlayers()) {
-			p.kickPlayer(ChatColor.translateAlternateColorCodes('&', "&e&lRestarteando Annihilation"));
+			p.kickPlayer(ChatColor.translateAlternateColorCodes('&', "&cRestarting Server..."));
 		}
 		
 		
@@ -282,7 +278,7 @@ Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&'
 
         ChatUtil.setRoman(getConfig().getBoolean("roman", false));
         File invFile = new File("plugins/"
-        		+ "DTN/users");
+        		+ "DTNReloaded/users");
         if (invFile.isDirectory()) {
             for (File f : invFile.listFiles()) {
                 f.delete();
@@ -486,9 +482,10 @@ Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&'
 
         if (time == -5L) {
             String winner = voting.getWinner();
+            Configuration messages = configManager.getConfig("messages.yml");
             maps.selectMap(winner);
-            getServer().broadcastMessage(ChatColor.GREEN + "Se ha elegido el Mapa: " + ChatColor.WHITE +  
-                    WordUtils.capitalize(winner));
+            String map = WordUtils.capitalize(winner);
+            getServer().broadcastMessage(colors(messages.getString("Game.MapChosen").replace("%MAP%", map)));
             loadMap(winner);
 
             voting.end();
@@ -617,7 +614,7 @@ Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&'
                     Util.giveMapSelector(p);
                     Util.giveShopSelector(p);
                     Util.giveleaveItem(p);
-                    p.getInventory().setItem(2, EQUIPOS());
+                    Util.giveTeamSelector(p);
                     p.updateInventory();
                 }
 
@@ -713,8 +710,7 @@ Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&'
 
         if (getPhase() > lastJoinPhase && !player.hasPermission("anni.phase") ||
         		getPhase() > lastJoinPhase && !player.hasPermission("vip.superheroe")) {
-            player.kickPlayer(ChatColor.RED
-                    + "No puedes entrar en el equipo en esta Fase!");
+            player.kickPlayer(colors(messages.getString("Error.JoinLate")));
             return;
         }
 
@@ -828,26 +824,13 @@ Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&'
             player.setFlying(false);
    }
 
-public static ItemStack EQUIPOS() {
-        ItemStack item = new ItemStack(Material.BEACON, 1);
-        ItemMeta im = item.getItemMeta();
-     
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&',  "&bSelector de Equipos &7(Click Derecho)"));
-          List<String> lore = new ArrayList<String>();  
-        lore.add(ChatColor.GRAY + "Elige un equipo y lucha!");
- 
-        im.setLore(lore);
-        item.setItemMeta(im);
-        return item;
-        
-    }
 
      @EventHandler
-    public void onJoin(final PlayerJoinEvent e) {
-        final Player p = e.getPlayer();
+    public void onJoin(PlayerJoinEvent e) {
+        Player p = e.getPlayer();
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-               p.getInventory().setItem(2, EQUIPOS());
+               Util.giveTeamSelector(p);
                 p.updateInventory();
             }
         }, 5L);
@@ -860,8 +843,9 @@ public void onPlayerInteract(PlayerInteractEvent event) {
         if(player.getInventory().getItemInMainHand() != null) {
             ItemStack iteminhand = player.getInventory().getItemInMainHand();
             if(iteminhand.hasItemMeta()){
-                if(iteminhand.getItemMeta().hasDisplayName() && iteminhand.getItemMeta().hasLore()){
-                    if(iteminhand.equals(EQUIPOS())) {
+                if(iteminhand.getItemMeta().hasDisplayName()){
+                	Configuration messages = Annihilation.configManager.getConfig("messages.yml");
+                    if(iteminhand.getItemMeta().getDisplayName().contains(Annihilation.colors(messages.getString("Items.TeamSelector")))) {
                         menu.show(player);
                     }
                 }
@@ -944,7 +928,7 @@ public void onPlayerInteract(PlayerInteractEvent event) {
     	   p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2Equipo Verde: &r" + green ));
        }
        
-       public String colors(String message) {
+       public static String colors(String message) {
     	   return ChatColor.translateAlternateColorCodes('&', message);
        }
        

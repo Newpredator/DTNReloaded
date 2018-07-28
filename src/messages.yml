@@ -1,5 +1,14 @@
+Game:
+  MapChosen: '&aThe &r%MAP% &amap has been chosen'
 Error:
   NoPermToChangeTeam: '&cYou cant change your team'
   TeamDoesntExist: '&cThat team doesnt exist'
   TeamFull: '&cThis team is full, try with another one'
   JoinWithNexusDestroyed: '&cYou cant join because this team nexus was destroyed'
+  JoinLate: '&cYou cant go in so late'
+Items:
+  TeamSelector: '&bTeam Selector &7(Right Click)'
+  KitSelector: '&aKit Selector &7(Right Click)'
+  MapSelector: '&cMap Selector &7(Right Click)'
+  KitShop: '&dKit Shop &7(Right Click)'
+  LeaveItem: '&eLeave Game &7(Right Click)'

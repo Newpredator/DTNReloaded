@@ -41,7 +41,7 @@ public class TitleApi
     connection.sendPacket(packetPlayOutTimes);
     if (subtitle != null)
     {
-      subtitle = subtitle.replaceAll("%player%", player.getDisplayName());
+      subtitle = subtitle.replace("%player%", player.getDisplayName());
       subtitle = ChatColor.translateAlternateColorCodes('&', subtitle);
       IChatBaseComponent titleSub = ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
       PacketPlayOutTitle packetPlayOutSubTitle = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE, titleSub);
@@ -49,7 +49,7 @@ public class TitleApi
     }
     if (title != null)
     {
-      title = title.replaceAll("%player%", player.getDisplayName());
+      title = title.replace("%player%", player.getDisplayName());
       title = ChatColor.translateAlternateColorCodes('&', title);
       IChatBaseComponent titleMain = ChatSerializer.a("{\"text\": \"" + title + "\"}");
       PacketPlayOutTitle packetPlayOutTitle = new PacketPlayOutTitle(EnumTitleAction.TITLE, titleMain);
@@ -68,8 +68,8 @@ public class TitleApi
     }
     footer = ChatColor.translateAlternateColorCodes('&', footer);
     
-    header = header.replaceAll("%player%", player.getDisplayName());
-    footer = footer.replaceAll("%player%", player.getDisplayName());
+    header = header.replace("%player%", player.getDisplayName());
+    footer = footer.replace("%player%", player.getDisplayName());
     
     PlayerConnection connection = ((CraftPlayer)player).getHandle().playerConnection;
     IChatBaseComponent tabFoot = ChatSerializer.a("{\"text\": \"" + footer + "\"}");

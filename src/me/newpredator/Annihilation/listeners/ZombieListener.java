@@ -1,7 +1,6 @@
 package me.newpredator.Annihilation.listeners;
 
 import me.newpredator.Annihilation.Annihilation;
-import me.newpredator.Annihilation.Util;
 import me.newpredator.Annihilation.manager.PlayerSerializer;
 import me.newpredator.Annihilation.object.GameTeam;
 import me.newpredator.Annihilation.object.PlayerMeta;
@@ -127,7 +126,6 @@ public class ZombieListener implements Listener {
         }
     }
 
-    @SuppressWarnings("unlikely-arg-type")
 	@EventHandler
     public void onDeathEntity(EntityDeathEvent e) {
         if (e.getEntity() instanceof Zombie) {
@@ -136,17 +134,16 @@ public class ZombieListener implements Listener {
             if (z.getCustomName() == null) {
                 return;
             }
-            String zName = Util.replaceTeamColor(z.getCustomName());
+            String zName = (z.getCustomName());
             e.getDrops().addAll(PlayerSerializer.dropItem(zName));
             if (plugin.getZombies().containsKey(z.getCustomName())) {
-                plugin.getZombies().remove(z);
+                plugin.getZombies().remove(zName);
                 z.remove();
                 PlayerSerializer.removeItems(zName);
             }
         }
     }
 
-    @SuppressWarnings("unlikely-arg-type")
 	@EventHandler
     public void onDamageEntity(EntityDamageEvent e) {
         if (e.getEntity() instanceof Zombie) {
@@ -155,9 +152,9 @@ public class ZombieListener implements Listener {
                 return;
             }
             if (e.getDamage() >= z.getHealth() || e.getEntity().getLocation().getY() <= 0) {
-                String zName = Util.replaceTeamColor(z.getCustomName());
+                String zName = z.getCustomName();
                 if (plugin.getZombies().containsKey(z.getCustomName())) {
-                    plugin.getZombies().remove(z);
+                    plugin.getZombies().remove(zName);
                     z.remove();
                     z.setHealth(0);
                     PlayerSerializer.removeItems(zName);

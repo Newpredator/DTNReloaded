@@ -26,11 +26,8 @@ public class ChatUtil {
 	private static final String WHITE = ChatColor.WHITE.toString();
     private static final String AQUA = ChatColor.AQUA.toString();
     private static final String BOLD = ChatColor.BOLD.toString();
-	private final Annihilation plugin;
-
-    public ChatUtil(Annihilation pl) {
-        plugin = pl;
-        plugin.configManager.getConfig("config.yml");
+	public ChatUtil(Annihilation pl) {
+        Annihilation.configManager.getConfig("config.yml");
     }
 
     public static void setRoman(boolean b) {
@@ -45,17 +42,17 @@ public class ChatUtil {
         PermissionUser user = PermissionsEx.getUser(sender.getName());
         String rank = user.getPrefix();
         if (!rank.equals(""))
-        group += " " + rank.replaceAll("&", "§");
+        group += " " + rank.replace("&", "§");
         
         if (team == GameTeam.NONE) {
-            group = GRAY + "(All) " + GRAY + "[" + DARK_PURPLE + "Annihilation" + GRAY + "]" + rank.replaceAll("&", "§");
+            group = GRAY + "(All) " + GRAY + "[" + DARK_PURPLE + "Annihilation" + GRAY + "]" + rank.replace("&", "§");
             username = sender.getName();
         } else {
-            group = GRAY + "(All) " + GRAY + "[" + team.coloredName() + GRAY + "]" + rank.replaceAll("&", "§");
+            group = GRAY + "(All) " + GRAY + "[" + team.coloredName() + GRAY + "]" + rank.replace("&", "§");
             username = sender.getName();
             if (dead) {
                 group = DARK_GRAY + "[" + DARK_RED + "MUERTO" + DARK_GRAY + " "
-                        + group + rank.replaceAll("&", "§");
+                        + group + rank.replace("&", "§");
             }
         }
         String msg = message;
@@ -80,7 +77,7 @@ public class ChatUtil {
         PermissionUser user = PermissionsEx.getUser(sender.getName());
         String rank = user.getPrefix();
         if (!rank.equals(""))
-            group += " " + rank.replaceAll("&", "§");
+            group += " " + rank.replace("&", "§");
         String toSend = group + " §r" + sender.getName() + ChatColor.DARK_GRAY + ": " + ChatColor.GOLD + message;
         for (Player player : team.getPlayers())
             player.sendMessage(toSend);

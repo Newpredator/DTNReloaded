@@ -37,7 +37,7 @@ public class PlayerSerializer {
        try {
         File file;
         FileConfiguration config;
-        file = new File("plugins/DTN/users/" + playerName + ".yml");
+        file = new File("plugins/DTNReloaded/users/" + playerName + ".yml");
         config = YamlConfiguration.loadConfiguration(file);
         config.set("Name", playerName);
         config.set("Health", health);
@@ -60,7 +60,7 @@ public class PlayerSerializer {
 
     public static void RetorePlayer(Player p) {
         String playerName = p.getName();
-        File f = new File("plugins/DTN/users/" + playerName + ".yml");
+        File f = new File("plugins/DTNReloaded/users/" + playerName + ".yml");
         FileConfiguration config = YamlConfiguration.loadConfiguration(f);
         ConfigToPlayer(p, config);
         f.delete();
@@ -69,7 +69,7 @@ public class PlayerSerializer {
     public static FileConfiguration getConfig(String playerName) {
         File file;
         FileConfiguration config;
-        file = new File("plugins/DTN/users/" + playerName + ".yml");
+        file = new File("plugins/DTNReloaded/users/" + playerName + ".yml");
         config = YamlConfiguration.loadConfiguration(file);
         return config;
     }
@@ -78,7 +78,7 @@ public class PlayerSerializer {
         try {
             File file;
             FileConfiguration config;
-            file = new File("plugins/DTN/users/" + playerName + ".yml");
+            file = new File("plugins/DTNReloaded/users/" + playerName + ".yml");
             config = YamlConfiguration.loadConfiguration(file);
             config.set("killed", true);
             config.save(file);
@@ -89,14 +89,14 @@ public class PlayerSerializer {
 
     public static void delete(String playerName) {
         File file;
-        file = new File("plugins/DTN/users/" + playerName + ".yml");
+        file = new File("plugins/DTNReloaded/users/" + playerName + ".yml");
         file.delete();
     }
 
     public static void save(String playerName) {
         File file;
         FileConfiguration config;
-        file = new File("plugins/DTN/users/" + playerName + ".yml");
+        file = new File("plugins/DTNReloaded/users/" + playerName + ".yml");
         config = YamlConfiguration.loadConfiguration(file);
         try {
             config.save(file);

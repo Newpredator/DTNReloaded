@@ -109,7 +109,7 @@ public class JoinListener
     }, 10L);
   }
   
-@SuppressWarnings({ "static-access", "deprecation", "unlikely-arg-type" })
+@SuppressWarnings("deprecation")
 public void reJoinPlayer(Player p)
   {
     PlayerMeta meta = PlayerMeta.getMeta(p);
@@ -148,7 +148,7 @@ public void reJoinPlayer(Player p)
       }
     }
     }
-    File playerdataFile = new File("plugins/DTN/users/" + playerName + ".yml");
+    File playerdataFile = new File("plugins/DTNReloaded/users/" + playerName + ".yml");
     FileConfiguration playerConfig = YamlConfiguration.loadConfiguration(playerdataFile);
     p.getInventory().clear();
     PlayerSerializer.ConfigToPlayer(p, playerConfig);
@@ -192,7 +192,7 @@ public void reJoinPlayer(Player p)
     p.sendMessage("Se devuelven todas las cosas");
     p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
     this.plugin.getSignHandler().updateSigns(meta.getTeam());
-    this.plugin.getScoreboardHandler().update();
+    Annihilation.getScoreboardHandler().update();
     p.setGameMode(GameMode.SURVIVAL);
     p.updateInventory();
 
@@ -206,7 +206,7 @@ public void reJoinPlayer(Player p)
     
     p.setPlayerListName(ChatColor.translateAlternateColorCodes('&', ranks  + Annihilation.getScoreboardHandler().sb.getPlayerTeam(p).getPrefix() + " " +  p.getName()));
  for(Entity en : p.getWorld().getEntities()) {
-	 if(en.getName() == p.getName() && en.equals(EntityType.ZOMBIE)) {
+	 if(en.getName() == p.getName() && en.getType().equals(EntityType.ZOMBIE)) {
 		 en.remove();
 	 }
  }

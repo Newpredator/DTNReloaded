@@ -38,35 +38,35 @@ public class MotdListener implements Listener {
             String motdlobby = plugin.getConfig().getString("motd-lobby");
             String motdstart = plugin.getConfig().getString("motd-start");
             try {
-                motd = motd.replaceAll("%PHASE%",
+                motd = motd.replace("%PHASE%",
                         String.valueOf(plugin.getPhase()));
-                motd = motd.replaceAll("%TIME%",
+                motd = motd.replace("%TIME%",
                         PhaseManager.timeString(plugin.getPhaseManager().getTime()));
-                motd = motd.replaceAll("%PLAYERCOUNT%",
+                motd = motd.replace("%PLAYERCOUNT%",
                         String.valueOf(Bukkit.getOnlinePlayers().size()));
-                motd = motd.replaceAll("%MAXPLAYERS%",
+                motd = motd.replace("%MAXPLAYERS%",
                         String.valueOf(Bukkit.getMaxPlayers()));
-                motd = motd.replaceAll("%GREENNEXUS%",
+                motd = motd.replace("%GREENNEXUS%",
                         String.valueOf(getNexus(GameTeam.GREEN)));
-                motd = motd.replaceAll("%GREENCOUNT%",
+                motd = motd.replace("%GREENCOUNT%",
                         String.valueOf(getPlayers(GameTeam.GREEN)));
-                motd = motd.replaceAll("%REDNEXUS%",
+                motd = motd.replace("%REDNEXUS%",
                         String.valueOf(getNexus(GameTeam.RED)));
-                motd = motd.replaceAll("%REDCOUNT%",
+                motd = motd.replace("%REDCOUNT%",
                         String.valueOf(getPlayers(GameTeam.GREEN)));
-                motd = motd.replaceAll("%BLUENEXUS%",
+                motd = motd.replace("%BLUENEXUS%",
                         String.valueOf(getNexus(GameTeam.BLUE)));
-                motd = motd.replaceAll("%BLUECOUNT%",
+                motd = motd.replace("%BLUECOUNT%",
                         String.valueOf(getPlayers(GameTeam.GREEN)));
-                motd = motd.replaceAll("%YELLOWNEXUS%",
+                motd = motd.replace("%YELLOWNEXUS%",
                         String.valueOf(getNexus(GameTeam.YELLOW)));
-                motd = motd.replaceAll("%YELLOWCOUNT%",
+                motd = motd.replace("%YELLOWCOUNT%",
                         String.valueOf(getPlayers(GameTeam.GREEN)));
                 if (plugin.getPhase() == 0) {
                     e.setMotd(ChatColor.translateAlternateColorCodes('&', motdlobby));
                     return;
                 } else if (plugin.getPhase() < plugin.lastJoinPhase + 1 && plugin.getPhase() != 0) {
-                    motdstart = motdstart.replaceAll("%PHASE%", String.valueOf(plugin.getPhase()));
+                    motdstart = motdstart.replace("%PHASE%", String.valueOf(plugin.getPhase()));
                     e.setMotd(ChatColor.translateAlternateColorCodes('&', motdstart));
                     return;
                 }

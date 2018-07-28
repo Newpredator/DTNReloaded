@@ -32,6 +32,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.LivingEntity;
@@ -426,17 +427,13 @@ public class Util {
 
     public static boolean playerPlayed(Player p) {
         String playerName = p.getName();
-        File playerdataFile = new File("plugins/DTN/users/" + playerName + ".yml");
+        File playerdataFile = new File("plugins/DTNReloaded/users/" + playerName + ".yml");
         if (playerdataFile.exists()) {
             return true;
         }
         return false;
     }
 
-    public static String replaceTeamColor(String s) {
-        s = s.replaceAll("(§([a-fk-or0-9]))", "");
-        return s;
-    }
 
     public static boolean getTeam(GameTeam team) {
         for (Map.Entry<Player, BlockObject> bo : Annihilation.getInstance().crafting.entrySet()) {
@@ -561,40 +558,51 @@ public class Util {
         return Math.abs(bx - ex) < 0.5 && by - ey < e.getEyeHeight()
                 && by - ey > -0.5 && Math.abs(bz - ez) < 0.5;
     }
-    
 
-    
     public static void giveClassSelector(Player player){
+    	Configuration messages = Annihilation.configManager.getConfig("messages.yml");
         ItemStack selector = new ItemStack(Material.FEATHER);
         ItemMeta itemMeta = selector.getItemMeta();
-        itemMeta.setDisplayName("§aSelecciona Clase §7(Click Derecho)");
+        itemMeta.setDisplayName(Annihilation.colors(messages.getString("Items.KitSelector")));
         selector.setItemMeta(itemMeta);
         player.getInventory().setItem(0, selector);
         player.updateInventory();
     }
     
 	public static void giveMapSelector(Player player){
+		Configuration messages = Annihilation.configManager.getConfig("messages.yml");
         ItemStack selector = new ItemStack(Material.BOOK);
         ItemMeta itemMeta = selector.getItemMeta();
-        itemMeta.setDisplayName("§cVota Mapa §7(Click Derecho)");
+        itemMeta.setDisplayName(Annihilation.colors(messages.getString("Items.MapSelector")));
         selector.setItemMeta(itemMeta);
         player.getInventory().setItem(1, selector);
         player.updateInventory();
-    
+	}
+        
+    public static void giveTeamSelector(Player player) {
+        ItemStack item = new ItemStack(Material.BEACON, 1);
+        ItemMeta im = item.getItemMeta();
+        Configuration messages = Annihilation.configManager.getConfig("messages.yml");
+        im.setDisplayName(Annihilation.colors(messages.getString("Items.TeamSelector"))); 
+        item.setItemMeta(im);
+        player.getInventory().setItem(2, item);
+        player.updateInventory();
 }
 	public static void giveShopSelector(Player player){
+		Configuration messages = Annihilation.configManager.getConfig("messages.yml");
         ItemStack selector = new ItemStack(Material.GOLD_INGOT);
         ItemMeta itemMeta = selector.getItemMeta();
-        itemMeta.setDisplayName("§dCompra kits §7(Click Derecho)");
+        itemMeta.setDisplayName(Annihilation.colors(messages.getString("Items.KitShop")));
         selector.setItemMeta(itemMeta);
         player.getInventory().setItem(7, selector);
         player.updateInventory();
     
 }
 	public static void giveleaveItem(Player player){
+		Configuration messages = Annihilation.configManager.getConfig("messages.yml");
         ItemStack selector = new ItemStack(Material.FIREBALL);
         ItemMeta itemMeta = selector.getItemMeta();
-        itemMeta.setDisplayName("§eSal §7(Click Derecho)");
+        itemMeta.setDisplayName(Annihilation.colors(messages.getString("Items.LeaveItem")));
         selector.setItemMeta(itemMeta);
         player.getInventory().setItem(8, selector);
         player.updateInventory();

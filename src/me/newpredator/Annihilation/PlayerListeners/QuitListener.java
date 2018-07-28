@@ -1,7 +1,6 @@
 package me.newpredator.Annihilation.PlayerListeners;
 
 import me.newpredator.Annihilation.Annihilation;
-import me.newpredator.Annihilation.Util;
 import me.newpredator.Annihilation.manager.PlayerSerializer;
 import me.newpredator.Annihilation.object.GameTeam;
 import me.newpredator.Annihilation.object.PlayerMeta;
@@ -101,8 +100,7 @@ public class QuitListener implements Listener {
                         if (z.getCustomName() == null) {
                             return;
                         }
-                        String zName = Util.replaceTeamColor(z.getCustomName());
-                        PlayerSerializer.removeItems(zName);
+                        PlayerSerializer.removeItems(z.getCustomName());
                         if (z != null) {
                             z.remove();
                         }
@@ -120,7 +118,7 @@ public class QuitListener implements Listener {
         if (e.getReason()
                 .equals(ChatColor.RED + "ANNIHILATION-TRIGGER-KICK-01")) {
             e.setReason(ChatColor.RED
-                    +// Localizer.getLanguage(e.getPlayer()) + ".ERROR_GAME_PHASE"); 
+                    +
                     "No puedes entrar en esta fase");
             e.setLeaveMessage(null);
         }
